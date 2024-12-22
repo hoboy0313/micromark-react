@@ -7,7 +7,7 @@ import '@hoboy/micromark-react/index.scss';
 /* eslint-disable max-len */
 import {useCallback, useEffect, useRef, useState} from 'react';
 import {createRoot} from 'react-dom/client';
-import {MicroMarkdown, MicroMarkdownRef, type Typing} from '@hoboy/micromark-react';
+import {MicroMark, MicroMarkRef, type Typing} from '@hoboy/micromark-react';
 import {Input, Checkbox, Button} from '@material-tailwind/react';
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
         charactersPerSecond: 3,
     });
 
-    const markdownRef = useRef<MicroMarkdownRef>(null!);
+    const markdownRef = useRef<MicroMarkRef>(null!);
 
     const textareaRef = useRef<HTMLTextAreaElement>(null!);
 
@@ -85,7 +85,7 @@ const App = () => {
                 />
 
                 {/* show */}
-                <MicroMarkdown
+                <MicroMark
                     ref={markdownRef}
                     className="flex-1 overflow-auto p-3 border-r-[1px] border-solid border-r-gray-300"
                     typing={typing}

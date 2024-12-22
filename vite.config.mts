@@ -8,6 +8,8 @@ const root = path.resolve(__dirname, 'example');
 export default defineConfig({
     root,
 
+    base: '/micromark-react',
+
     plugins: [react()],
 
     css: {
@@ -17,6 +19,7 @@ export default defineConfig({
     },
 
     build: {
+        outDir: './dist',
         rollupOptions: {
             input: {
                 stream: path.resolve(root, 'pages/stream/index.html'),
