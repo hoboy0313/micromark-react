@@ -1,0 +1,132 @@
+
+@mixin title {
+    $list: h1, h2, h3, h4, h5, h6;
+
+    :where(h1, h2, h3, h4, h5, h6) {
+        padding: 0;
+        margin: 18px 0 6px;
+        font-weight: 600;
+    }
+
+    @each $item in $list {
+        // 获取索引
+        $index: index($list, $item);
+
+        :where(#{$item}) {
+            font-size: var(--so-markdown-#{$item}-font-size);
+            line-height: calc(var(--so-markdown-#{$item}-font-size) + 8px);
+        }
+    }
+}
+
+@mixin list {
+    :where(ul, ol) {
+        width: 100%;
+        margin-block: 16px;
+        padding: 0 0 0 32px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    ul {
+        --so-list-item-type: disc;
+    }
+
+    ol {
+        --so-list-item-type: decimal;
+    }
+
+    :where(li) {
+        display: list-item;
+        list-style-type: var(--so-list-item-type);
+        box-sizing: border-box;
+        margin-block-end: 16px;
+
+        &:last-child {
+            margin-block-end: 0;
+        }
+    }
+}
+
+@mixin paragraph {
+    :where(p) {
+        margin-block: 16px;
+    }
+
+    :where(strong) {
+        font-weight: 600;
+    }
+}
+
+@mixin anchor {
+    :where(a) {
+        color: #3275fa;
+        cursor: pointer;
+        font-weight: 400;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+@mixin img {
+    :where(img) {
+        max-height: 600px;
+        max-width: 300px;
+        border-radius: 8px;
+        display: block;
+        background: none;
+        object-fit: contain;
+    }
+}
+
+.so-micro-markdown {
+    --so-markdown-h1-font-size: 22px;
+    --so-markdown-h2-font-size: 20px;
+    --so-markdown-h3-font-size: 18px;
+    --so-markdown-h4-font-size: 16px;
+    --so-markdown-h5-font-size: 14px;
+    --so-markdown-h6-font-size: 12px;
+    --so-markdown-p-font-size: 14px;
+
+    width: 100%;
+    font-size: var(--so-markdown-p-font-size);
+    line-height: calc(var(--so-markdown-p-font-size) + 8px);
+    word-break: break-word;
+    color: #11141a;
+
+    @include title;
+    @include list;
+    @include paragraph;
+    @include anchor;
+    @include img;
+
+    > *:first-child {
+        margin-top: 0;
+    }
+
+    > *:last-child {
+        margin-bottom: 0;
+    }
+
+    &--printing {
+        &:empty::after,
+        > *:last-child::after {
+            content: '';
+            display: inline-block;
+            width: 3px;
+            height: 18px;
+            background-color: #11141a;
+            animation: blink 1s infinite cubic-bezier(.4, 0, .2, 1);
+            vertical-align: middle;
+        }
+    }
+}
+
+// 闪烁动画
+@keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}

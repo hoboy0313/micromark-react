@@ -1,0 +1,15 @@
+.DS_Store
+*.log
+
+coverage/
+node_modules/
+
+
+# lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# build
+dist/
+tsconfig.tsbuildinfo

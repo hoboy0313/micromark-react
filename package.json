@@ -1,0 +1,39 @@
+{
+  "name": "@hoboy/micromark-react",
+  "version": "1.0.0",
+  "description": "markdown render basic micromark",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "keywords": [
+    "markdown",
+    "micromark",
+    "react"
+  ],
+  "author": "liujinghan",
+  "license": "MIT",
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "html-react-parser": "^5.2.0",
+    "micromark": "^4.0.1",
+    "micromark-util-types": "^2.0.1"
+  },
+  "devDependencies": {
+    "@material-tailwind/react": "^2.1.10",
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "postcss": "^8.4.49",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.4.16",
+    "vite": "^6.0.3"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
